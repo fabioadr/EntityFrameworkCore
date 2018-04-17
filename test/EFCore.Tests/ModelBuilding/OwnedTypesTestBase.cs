@@ -505,6 +505,13 @@ namespace Microsoft.EntityFrameworkCore.ModelBuilding
 
                 Assert.Equal(2, modelBuilder.Model.GetEntityTypes(typeof(CustomerDetails)).Count);
             }
+
+            [Fact]
+            public virtual void OwnedType_can_derive_from_Collection()
+            {
+                var modelBuilder = CreateModelBuilder();
+                modelBuilder.Entity<PrincipalEntity>().OwnsOne(o => o.InverseNav);
+            }
         }
     }
 }
